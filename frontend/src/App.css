@@ -19,7 +19,6 @@ body {
   position: relative;
 }
 
-/* Toast Notifications */
 .toast {
   position: fixed;
   top: 20px;
@@ -84,7 +83,6 @@ body {
   }
 }
 
-/* Header Styles */
 .app-header {
   height: 80px;
   background: white;
@@ -159,7 +157,6 @@ body {
   transform: translateY(-1px);
 }
 
-/* Map Styles */
 .map-background {
   flex: 1;
   position: relative;
@@ -177,7 +174,6 @@ body {
   text-align: center;
 }
 
-/* Bottom Panel - Popup Style with Glassmorphism */
 .bottom-panel {
   position: absolute;
   bottom: 20px;
@@ -218,7 +214,6 @@ body {
   font-weight: 400;
 }
 
-/* Form Styles */
 .form-grid {
   display: flex;
   flex-direction: column;
@@ -272,7 +267,6 @@ body {
   cursor: not-allowed;
 }
 
-/* Waypoints */
 .waypoints-section {
   margin: 12px 0;
 }
@@ -321,16 +315,15 @@ body {
   transform: translateY(-1px);
 }
 
-/* Action Section */
 .action-section {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
 .action-buttons {
   display: flex;
-  gap: 12px;
+  gap: 8px;
   align-items: stretch;
 }
 
@@ -341,15 +334,17 @@ body {
 
 .action-buttons .primary-btn {
   flex: 1;
-  min-width: 180px;
+  min-width: 160px;
 }
 
 .primary-btn {
-  padding: 14px 24px;
-  background: #00B69B;
+  padding: 12px 20px;
+  background: rgba(0, 182, 155, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: white;
-  border: none;
-  border-radius: 12px;
+  border: 1px solid rgba(0, 182, 155, 0.3);
+  border-radius: 10px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -357,12 +352,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(5px);
   font-family: inherit;
 }
 
 .primary-btn:hover:not(:disabled) {
-  background: #009688;
+  background: rgba(0, 150, 136, 0.95);
   transform: translateY(-1px);
   box-shadow: 0 8px 25px rgba(0, 182, 155, 0.3);
 }
@@ -374,28 +368,28 @@ body {
 }
 
 .secondary-btn {
-  padding: 14px 20px;
-  background: transparent;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: #00B69B;
-  border: 1px solid #00B69B;
-  border-radius: 12px;
+  border: 1px solid rgba(0, 182, 155, 0.4);
+  border-radius: 10px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
-  font-size: 14px;
+  font-size: 13px;
   display: flex;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(5px);
   font-family: inherit;
 }
 
 .secondary-btn:hover {
-  background: rgba(0, 182, 155, 0.1);
-  border-color: #009688;
+  background: rgba(0, 182, 155, 0.15);
+  border-color: rgba(0, 150, 136, 0.6);
 }
 
-/* Loading Spinner */
 .spinner {
   width: 16px;
   height: 16px;
@@ -410,7 +404,6 @@ body {
   100% { transform: rotate(360deg); }
 }
 
-/* Results Section */
 .results-section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -461,7 +454,6 @@ body {
   font-size: 18px;
 }
 
-/* Result Actions */
 .result-actions {
   grid-column: 1 / -1;
   display: flex;
@@ -498,7 +490,6 @@ body {
   transform: translateY(-1px);
 }
 
-/* Price Breakdown */
 .price-breakdown {
   grid-column: 1 / -1;
   margin-top: 12px;
