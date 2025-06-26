@@ -3,65 +3,97 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#667eea" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#00B69B" />
     <meta
       name="description"
-      content="Professional hauling cost calculator - Calculate transportation costs, distances, and routes with interactive maps. Plan your logistics efficiently."
+      content="Professional hauling cost calculator with Google Maps integration. Calculate transportation costs, distances, and routes with interactive maps. Plan your logistics efficiently with real-time pricing and route optimization."
     />
-    <meta name="keywords" content="hauling, transportation, cost calculator, logistics, shipping, distance calculator, route planner" />
-    <meta name="author" content="Your Company Name" />
+    <meta name="keywords" content="hauling, transportation, cost calculator, logistics, shipping, distance calculator, route planner, delivery, freight, trucking, Philippines" />
+    <meta name="author" content="Express Hauling Services" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://yourdomain.com" />
     
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Hauling Cost Calculator" />
-    <meta property="og:description" content="Calculate transportation costs and plan optimal routes for your hauling needs." />
-    <meta property="og:image" content="%PUBLIC_URL%/logo512.png" />
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content="Hauling Cost Calculator" />
-    <meta property="twitter:description" content="Calculate transportation costs and plan optimal routes for your hauling needs." />
-    <meta property="twitter:image" content="%PUBLIC_URL%/logo512.png" />
-    
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="mask-icon" href="%PUBLIC_URL%/safari-pinned-tab.svg" color="#00B69B" />
+    <meta name="msapplication-TileColor" content="#00B69B" />
     
-    <!-- Preconnect to Google Fonts for better performance -->
+    <!-- Preconnect to external domains for better performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://maps.googleapis.com">
+    <link rel="preconnect" href="https://maps.gstatic.com">
+    
+    <!-- DNS prefetch for additional performance -->
+    <link rel="dns-prefetch" href="//unpkg.com">
     
     <!-- Ion Icons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     
-    <!-- Google Fonts - Optional: Uncomment if you want to use custom fonts -->
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"> -->
+    <!-- Google Fonts with display=swap for better performance -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Preload critical CSS for better performance -->
+    <!-- Preload critical resources -->
     <link rel="preload" href="/static/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/logo.png" as="image">
     
-    <title>Hauling Cost Calculator - Professional Transportation Planning</title>
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Express Hauling Cost Calculator",
+      "description": "Professional hauling cost calculator with route optimization and Google Maps integration",
+      "url": "https://yourdomain.com",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "provider": {
+        "@type": "Organization",
+        "name": "Express Hauling Services",
+        "url": "https://yourdomain.com"
+      },
+      "featureList": [
+        "Route calculation",
+        "Cost estimation",
+        "Waypoint optimization",
+        "Google Maps integration",
+        "Multiple vehicle types",
+        "Export functionality"
+      ]
+    }
+    </script>
+    
+    <title>Express Hauling Cost Calculator - Professional Transportation Planning Tool</title>
     
     <style>
-      /* Critical CSS for initial page load */
       body {
         margin: 0;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         background: #F4FFFD !important;
         min-height: 100vh;
+        overflow: hidden;
       }
       
-      /* Loading spinner styles */
+      /* Enhanced loading spinner */
       .loading-container {
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        background: #F4FFFD;
+        background: linear-gradient(135deg, #F4FFFD 0%, #E8F5E8 100%);
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -69,21 +101,68 @@
         z-index: 9999;
       }
       
+      .loading-content {
+        text-align: center;
+        animation: fadeInUp 0.6s ease-out;
+      }
+      
+      .loading-logo {
+        width: 80px;
+        height: 80px;
+        background: #00B69B;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        box-shadow: 0 10px 30px rgba(0, 182, 155, 0.3);
+        animation: pulse 2s ease-in-out infinite;
+      }
+      
+      .loading-logo svg {
+        width: 40px;
+        height: 40px;
+        color: white;
+      }
+      
       .loading-spinner {
-        width: 50px;
-        height: 50px;
-        border: 4px solid rgba(0, 182, 155, 0.3);
+        width: 60px;
+        height: 60px;
+        border: 4px solid rgba(0, 182, 155, 0.2);
         border-top: 4px solid #00B69B;
         border-radius: 50%;
         animation: spin 1s linear infinite;
-        margin-bottom: 20px;
+        margin: 20px auto;
       }
       
       .loading-text {
-        color: #333;
-        font-size: 18px;
-        font-weight: 500;
-        text-align: center;
+        color: #1f2937;
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+      
+      .loading-subtext {
+        color: #6b7280;
+        font-size: 16px;
+        font-weight: 400;
+      }
+      
+      .loading-progress {
+        width: 200px;
+        height: 4px;
+        background: rgba(0, 182, 155, 0.2);
+        border-radius: 2px;
+        margin: 20px auto 0;
+        overflow: hidden;
+      }
+      
+      .loading-progress-bar {
+        height: 100%;
+        background: linear-gradient(90deg, #00B69B, #009688);
+        border-radius: 2px;
+        animation: progressFill 3s ease-out;
+        transform-origin: left;
       }
       
       @keyframes spin {
@@ -91,54 +170,281 @@
         100% { transform: rotate(360deg); }
       }
       
-      /* Hide loading when React loads */
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+      }
+      
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      @keyframes progressFill {
+        0% { transform: scaleX(0); }
+        100% { transform: scaleX(1); }
+      }
+      
       .app-loaded .loading-container {
-        display: none;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+      }
+      
+      @media (prefers-reduced-motion: reduce) {
+        .loading-spinner,
+        .loading-logo,
+        .loading-content,
+        .loading-progress-bar {
+          animation: none;
+        }
+      }
+      
+      @media (prefers-color-scheme: dark) {
+        .loading-container {
+          background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        }
+        .loading-text {
+          color: #f9fafb;
+        }
+        .loading-subtext {
+          color: #d1d5db;
+        }
       }
     </style>
   </head>
   <body>
     <noscript>
-      <div style="padding: 20px; text-align: center; font-family: Arial, sans-serif;">
-        <h1>JavaScript Required</h1>
-        <p>You need to enable JavaScript to run this Hauling Cost Calculator app.</p>
-        <p>Please enable JavaScript in your browser settings and refresh the page.</p>
+      <div style="padding: 40px; text-align: center; font-family: 'Poppins', Arial, sans-serif; background: #F4FFFD; min-height: 100vh; display: flex; flex-direction: column; justify-content: center;">
+        <div style="max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+          <h1 style="color: #1f2937; margin-bottom: 20px; font-size: 28px;">JavaScript Required</h1>
+          <p style="color: #6b7280; font-size: 18px; line-height: 1.6; margin-bottom: 20px;">
+            You need to enable JavaScript to run the Express Hauling Cost Calculator app.
+          </p>
+          <p style="color: #6b7280; font-size: 16px; line-height: 1.6;">
+            Please enable JavaScript in your browser settings and refresh the page to access our route planning and cost calculation features.
+          </p>
+          <div style="margin-top: 30px; padding: 20px; background: #f0fdf4; border-radius: 12px; border-left: 4px solid #00B69B;">
+            <h3 style="color: #00B69B; margin-bottom: 10px; font-size: 18px;">Features you'll unlock:</h3>
+            <ul style="color: #1f2937; text-align: left; padding-left: 20px;">
+              <li>Interactive Google Maps integration</li>
+              <li>Real-time route calculation</li>
+              <li>Cost estimation with breakdown</li>
+              <li>Waypoint optimization</li>
+              <li>Export and sharing capabilities</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </noscript>
     
-    <!-- Loading screen -->
     <div class="loading-container" id="loading-screen">
-      <div class="loading-spinner"></div>
-      <div class="loading-text">Loading Hauling Calculator...</div>
+      <div class="loading-content">
+        <div class="loading-logo">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+          </svg>
+        </div>
+        <div class="loading-text">Express Hauling</div>
+        <div class="loading-subtext">Calculating optimal routes...</div>
+        <div class="loading-spinner"></div>
+        <div class="loading-progress">
+          <div class="loading-progress-bar"></div>
+        </div>
+      </div>
     </div>
     
     <div id="root"></div>
     
     <script>
-      // Hide loading screen when React app loads
+      let loadingTimeout;
+      
+      function hideLoadingScreen() {
+        const loadingScreen = document.getElementById('loading-screen');
+        if (loadingScreen) {
+          loadingScreen.style.opacity = '0';
+          loadingScreen.style.transition = 'opacity 0.5s ease-out';
+          setTimeout(function() {
+            loadingScreen.style.display = 'none';
+            document.body.classList.add('app-loaded');
+          }, 500);
+        }
+      }
+      
       window.addEventListener('load', function() {
-        setTimeout(function() {
-          const loadingScreen = document.getElementById('loading-screen');
-          if (loadingScreen) {
-            loadingScreen.style.opacity = '0';
-            loadingScreen.style.transition = 'opacity 0.5s ease-out';
-            setTimeout(function() {
-              loadingScreen.style.display = 'none';
-              document.body.classList.add('app-loaded');
-            }, 500);
-          }
-        }, 1000); // Show loading for at least 1 second
+        clearTimeout(loadingTimeout);
+        loadingTimeout = setTimeout(hideLoadingScreen, 1500);
       });
       
-      // Performance monitoring
+      setTimeout(function() {
+        if (document.getElementById('loading-screen')) {
+          hideLoadingScreen();
+        }
+      }, 5000);
+      
       if ('performance' in window) {
         window.addEventListener('load', function() {
           setTimeout(function() {
             const perfData = performance.getEntriesByType('navigation')[0];
-            console.log('Page load time:', perfData.loadEventEnd - perfData.loadEventStart, 'ms');
+            const loadTime = perfData.loadEventEnd - perfData.loadEventStart;
+            console.log('Page load time:', loadTime, 'ms');
+            
+            if ('PerformanceObserver' in window) {
+              try {
+                new PerformanceObserver((entryList) => {
+                  const entries = entryList.getEntries();
+                  const lastEntry = entries[entries.length - 1];
+                  console.log('LCP:', lastEntry.startTime, 'ms');
+                }).observe({ entryTypes: ['largest-contentful-paint'] });
+                
+                new PerformanceObserver((entryList) => {
+                  const entries = entryList.getEntries();
+                  entries.forEach((entry) => {
+                    console.log('FID:', entry.processingStart - entry.startTime, 'ms');
+                  });
+                }).observe({ entryTypes: ['first-input'] });
+                
+                new PerformanceObserver((entryList) => {
+                  let clsValue = 0;
+                  entryList.getEntries().forEach((entry) => {
+                    if (!entry.hadRecentInput) {
+                      clsValue += entry.value;
+                    }
+                  });
+                  console.log('CLS:', clsValue);
+                }).observe({ entryTypes: ['layout-shift'] });
+              } catch (e) {
+                console.log('Performance monitoring not fully supported');
+              }
+            }
           }, 0);
         });
       }
+      
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js')
+            .then(function(registration) {
+              console.log('SW registered: ', registration);
+            })
+            .catch(function(registrationError) {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+      
+      window.addEventListener('error', function(e) {
+        console.error('Global error:', e.error);
+      });
+      
+      window.addEventListener('unhandledrejection', function(e) {
+        console.error('Unhandled promise rejection:', e.reason);
+      });
+      
+      function applyTheme() {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (prefersDark) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      }
+      
+      applyTheme();
+      
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyTheme);
+      
+      function handleReducedMotion() {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) {
+          document.documentElement.setAttribute('data-reduced-motion', 'true');
+        }
+      }
+      
+      handleReducedMotion();
+      window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', handleReducedMotion);
+      
+      if ('connection' in navigator) {
+        const connection = navigator.connection;
+        if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
+          document.documentElement.setAttribute('data-slow-connection', 'true');
+        }
+      }
+      
+      function setVH() {
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+      }
+      
+      setVH();
+      window.addEventListener('resize', setVH);
+      window.addEventListener('orientationchange', setVH);
+      
+      let mapsLoaded = false;
+      function preloadMaps() {
+        if (!mapsLoaded && window.google && window.google.maps) {
+          mapsLoaded = true;
+          console.log('Google Maps API ready');
+        }
+      }
+      
+      ['click', 'scroll', 'keydown', 'touchstart'].forEach(event => {
+        document.addEventListener(event, preloadMaps, { once: true, passive: true });
+      });
+      
+      try {
+        const savedPreferences = localStorage.getItem('hauling-preferences');
+        if (savedPreferences) {
+          window.appPreferences = JSON.parse(savedPreferences);
+        }
+      } catch (e) {
+        console.log('Could not load saved preferences');
+      }
     </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Express Hauling Cost Calculator",
+      "description": "Professional transportation cost calculator with Google Maps integration, route optimization, and detailed pricing breakdown.",
+      "url": "https://yourdomain.com",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web Browser",
+      "browserRequirements": "Requires JavaScript. Works with Chrome 70+, Firefox 65+, Safari 12+, Edge 79+",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "PHP"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Express Hauling Services",
+        "url": "https://yourdomain.com"
+      },
+      "featureList": [
+        "Real-time route calculation",
+        "Multi-stop route optimization", 
+        "Cost breakdown by distance and weight",
+        "Multiple vehicle type support",
+        "Address autocomplete",
+        "GPS location detection",
+        "Route export and sharing",
+        "Mobile responsive design"
+      ],
+      "screenshot": "https://yourdomain.com/screenshot.png",
+      "softwareVersion": "2.0.0",
+      "datePublished": "2024-01-01",
+      "dateModified": "2025-06-25"
+    }
+    </script>
+    
+    <link rel="modulepreload" href="/static/js/main.js">
+    <link rel="preload" href="/static/media/logo.png" as="image" type="image/png">
+    
   </body>
 </html>
